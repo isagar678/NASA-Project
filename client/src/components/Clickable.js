@@ -1,20 +1,21 @@
-import { withSounds } from "arwes";
+import React, { useCallback } from 'react';
+import { withSounds } from 'arwes';
 
-const Clickable = props => {
-  const {
-    children,
-    sounds,
-    onClick,
-    ...rest
-  } = props;
+const Clickable = (props) => {
+  const { children, sounds, onClick, ...rest } = props;
 
-  const clickWithSound = (e) => {
-    sounds.click && sounds.click.play();
-    onClick && onClick(e);
-  };
+  const clickWithSound = useCallback((e) => {
+    if (sounds?.click?.play) sounds.click.play();
+    if (onClick) onClick(e);
+  }, [sounds, onClick]);
 
   return (
-    <span {...rest} onClick={clickWithSound}>
+    <span
+      {...rest}
+      onClick={clickWithSound}
+      tabIndex={0} // Makes it focusable for accessibility
+      role="button" // Indicates it's clickable
+    >
       {children}
     </span>
   );

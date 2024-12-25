@@ -1,0 +1,14 @@
+{
+  "name": "nasa_project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "watch" : "",
+    "server" : "cd server && npm run watch", 
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
