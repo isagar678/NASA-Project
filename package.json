@@ -2,13 +2,21 @@
   "name": "nasa_project",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "watch" : "",
-    "server" : "cd server && npm run watch", 
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+"scripts": {
+  "install-server": "npm install --prefix server",
+  "install-client": "npm install --prefix client",
+  "install": "npm run install-server && npm run install-client",
+  "server": "npm run watch --prefix server",
+  "client": "npm start --prefix client",
+  "watch": "concurrently \"npm run server\" \"npm run client\"",
+  "test": "npm run test --prefix server && npm run test --prefix client"
+}
+,
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
 }
