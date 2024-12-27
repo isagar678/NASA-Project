@@ -10,7 +10,12 @@ const launch ={
     upcoming:true,
     success: true,
 }
+
+function getAllLaunches() {
+    return Array.from(launches.values());
+}
+
 module.exports={
-    launches
+    getAllLaunches
 }
 
