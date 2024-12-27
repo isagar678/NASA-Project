@@ -6,4 +6,4 @@ function httpGetAllPlanets(req,res) {
 
 module.exports={
     httpGetAllPlanets
-}
+} 

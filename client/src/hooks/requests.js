@@ -3,7 +3,6 @@ const API_URL = `http://localhost:5000/`
 async function httpGetPlanets() {
   
     const response = await fetch(`http://localhost:5000/planets`)
-    console.log(response);
     return response.json();
 }
 
@@ -14,9 +13,24 @@ async function httpGetLaunches() {
   return fetchedLaunches.sort((a,b)=>a.flightNumber-b.flightNumber)
 }
 
+// Submit given launch data to launch system.
 async function httpSubmitLaunch(launch) {
-  // TODO: Once API is ready.
-  // Submit given launch data to launch system.
+  try {
+    return await fetch(`http://localhost:5000/launches`,{
+      method:"post",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(launch),
+  
+    })
+  } catch (error) {
+    return {
+      ok: false,
+    }
+  }
+
+
 }
 
 async function httpAbortLaunch(id) {
