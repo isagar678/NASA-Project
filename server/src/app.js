@@ -7,11 +7,11 @@ const {launchesRouter} = require('./routes/launches/launches.router')
 
 const app =express();
 
-app.use(cors(
-    {
-        origin: `http://localhost:3000`
-    }
-))
+app.use(cors({
+    origin: 'http://localhost:3000', // Replace with your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type']
+}));
 app.use(morgan('combined'))
 
 app.use(express.json())
